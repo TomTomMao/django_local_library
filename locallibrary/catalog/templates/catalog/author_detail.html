@@ -1,15 +1,16 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>{{author.first_name}} {{author.last_name}}</h1>
+  <h1>{{author.last_name}} {{author.first_name}}</h1>
   <p><strong>Date of Birth:</strong> {{ author.date_of_birth }}</p>
   <p><strong>Date of Death:</strong> {{ author.date_of_death }}</p>
+  <h4>books</h4>
 {% for book in author.book_set.all %}
-  <hr/>
-  <ul>
-    <li>
-      <a href={{book.get_absolute_url}}>{{book.title}}</a>
-    </li>
-  </ul>
+      <a href={{book.get_absolute_url}}>
+        {{book.title}}
+        #{{forloop.counter}}
+      </a>
+      {{book.bookinstance_set.all|length}}
+      <p>{{book.summary}}</p>
 {% endfor %}
   {% endblock %}
