@@ -118,3 +118,7 @@ class BookCreate(PermissionRequiredMixin, CreateView):
     model = Book
     fields = ["title", "author", "summary", "isbn", "genre", "language"]
     permission_required = 'catalog.add_book'
+class BookUpdate(PermissionRequiredMixin, UpdateView):
+    model = Book
+    fields = ["title", "author", "summary", "isbn", "genre", "language"]
+    permission_required = 'catalog.add_book'
